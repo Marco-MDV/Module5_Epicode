@@ -1,0 +1,12 @@
+nav{
+    background-color:#75B2BF;
+}
+
+nav a{
+    color: white !important;
+}
+
+nav button{
+    color: white !important;
+    border-color: white !important;
+}

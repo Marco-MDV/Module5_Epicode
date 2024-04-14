@@ -1,0 +1,44 @@
+.titlePage{
+    color: #D97941;
+}
+
+
+/* alert */
+.widthAlert{
+    width: 50%;
+}
+
+
+.closeAllert{
+    border: 0;
+    color: #D97941;
+    background-color: transparent;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.categoryBook{
+    color: #8C3E11;
+}
+
+/* button AllBooks */
+.AllBooks{
+    color: #FCA553;
+    border: 1px solid #FCA553;
+    background-color: transparent;
+    filter: blur(1.5px);
+}
+
+.AllBooks:hover{
+    color: #FCA553;
+    border: 1px solid #FCA553;
+    background-color: transparent;
+    filter: none;
+}
+
+
+@media screen and (max-width: 600px) {
+    .widthAlert{
+        width: 100%;
+    }
+}

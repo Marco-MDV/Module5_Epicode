@@ -1,8 +1,13 @@
+import MyNav from './components/myNav/MyNav.jsx';
+import MyMain from './components/myMain/MyMain.jsx'
+import MyFooter from './components/myFooter/MyFooter.jsx';
 
 function App() {
   return (
     <>
-      <h1>sono la week 1 day 4</h1>
+      <MyNav />
+      <MyMain />
+      <MyFooter />
     </>
   );
 }

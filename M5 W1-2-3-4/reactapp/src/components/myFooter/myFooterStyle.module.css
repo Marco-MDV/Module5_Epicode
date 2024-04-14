@@ -1,0 +1,10 @@
+footer{
+    background-color: #75B2BF;
+    color: white;
+}
+
+footer:last-child div a{
+    text-decoration: none;
+    color: white;
+}
+
