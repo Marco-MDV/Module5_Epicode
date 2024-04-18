@@ -6,7 +6,30 @@ nav a{
     color: white !important;
 }
 
-nav button{
-    color: white !important;
-    border-color: white !important;
+.myButton{
+    border: 1px solid white!important;
+    background-color: transparent ;
+}
+
+.myButton:hover{
+    animation: transition 0.2s ease-in forwards !important;
+}
+
+
+@keyframes transition {
+    from{
+        background-color: transparent;
+    }
+    to{
+        background-color: #D97941;
+    }
+}
+
+.figureImgModale{
+    width: 80px;
+    height: 80px;
+}
+
+.figureImgModale img{
+    object-fit: cover;
 }

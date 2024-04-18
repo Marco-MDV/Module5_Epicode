@@ -1,14 +1,9 @@
 /* card */
 
-
-.figureCard {
-    width: 100%;
-    height: 100%;
-}
-
 .titleBook{
     color: #75B2BF;
-    text-shadow: black 1px 1px;
+    text-shadow: white 1px 1px;
+    font-size: 20px;
 }
 
 .containerTitle{
@@ -17,31 +12,82 @@
 }
 
 
-.myCard:hover{
-    && .containerTitle{
-        opacity: 0;
-        background-color: #F2AF88;
-        animation: transitionTitle 0.6s linear forwards;
-    }
-    && .price{
-        opacity: 0;
-        animation: transitionTitle 0.6s linear forwards;
-    }
+.look{
+    opacity: 1 !important;
+    background-color: aliceblue;
+    color: #F2AF88;
 }
 
-.price{
-    opacity: 0;
-    background-color: #F2AF88;
+.myCard{
+    height: 500px;
+    border: 4px soldi #F2AF88;
+}
+
+.myCard figure{
+    height: 100%;
+}
+
+.myCard figure img{
+    border-radius: 12px 12px 12px 12px;
+}
+
+.containerInfo{
+    display: none;
+    width: 100%;
+}
+
+.containerInfo div button{
+    background-color: white;
+    border: 1px solid #75B2BF;
+    color: #F2AF88;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.containerInfo div p{
     color: #75B2BF;
-    text-shadow: black 1px 1px;
+    font-weight: bold;
+    text-shadow: white 1px 1px;
 }
 
+.myCard:hover{
+    
+    && figure{
+        height: auto;
+        animation: height 1s linear forwards;
+    }
+    && figure img{
+        object-fit: cover;
+        border-radius: 20px 20px 0 0;
+    }
+    && .containerInfo{
+        background-color: #F2AF88;
+        border-radius: 0 0 12px 12px;
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        animation: opacity 1s linear forwards;
+    }
+    
+}
 
-@keyframes transitionTitle {
+@keyframes opacity {
     from {
         opacity: 0;
     }
     to{
         opacity: 1;
+    }
+}
+
+
+@keyframes height {
+    from{
+        height: 100%;
+    }
+    to{
+        height: 50%;
     }
 }

@@ -8,8 +8,14 @@
     width: 50%;
 }
 
+.widthAlert:hover{
+    && .closeAllert{
+        opacity: 1;
+    }
+}
 
 .closeAllert{
+    opacity: 0;
     border: 0;
     color: #D97941;
     background-color: transparent;

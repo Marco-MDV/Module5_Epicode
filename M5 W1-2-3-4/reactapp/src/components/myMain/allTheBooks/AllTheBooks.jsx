@@ -1,49 +1,59 @@
-import booksFantasy from '../../../data/books/fantasy.json'
-import booksHistory from '../../../data/books/history.json'
-import booksHorror from '../../../data/books/horror.json'
-import booksRomance from '../../../data/books/romance.json'
-import booksScifi from '../../../data/books/scifi.json'
-import CategoryBooks from './categoryBooks/CategoryBooks'
 import { Row } from 'react-bootstrap'
+import CategoryBooks from './categoryBooks/CategoryBooks'
+import CategoryBooksSearch from './categoryBooksSearch/CategoryBooksSearch'
+
+export default function AllTheBooks({ booksFantasy, booksHistory, booksHorror, booksRomance, booksScifi, arrBooks, searchCard, hendleCLick }) {
+
+    //console.log(searchCard);
 
 
-
-export default function AllTheBooks() {
     return (
         <>
+            <Row>
+                <CategoryBooksSearch
+                    title='search'
+                    searchCard={searchCard}
+                    category='search'
+                    hendleCLick={hendleCLick}
+                    arrBooks={arrBooks}
+                />
+            </Row>
             <Row>
                 <CategoryBooks
                     title='booksFantasy'
                     books={booksFantasy}
-                    category='uno' 
+                    category='uno'
+                    hendleCLick={hendleCLick}
                 />
             </Row>
             <Row>
                 <CategoryBooks
                     title='booksHistory'
                     books={booksHistory}
-                    category='due' 
+                    category='due'
+                    hendleCLick={hendleCLick}
                 />
             </Row>
             <Row>
                 <CategoryBooks
                     title='booksHorror'
                     books={booksHorror}
-                    category='due' 
+                    category='due'
+                    hendleCLick={hendleCLick}
                 />
             </Row>
             <Row>
                 <CategoryBooks
                     title='booksRomance'
                     books={booksRomance}
-                    category='due' 
+                    category='due'
                 />
             </Row>
             <Row>
                 <CategoryBooks
                     title='booksScifi'
                     books={booksScifi}
-                    category='due' 
+                    category='due'
                 />
             </Row>
         </>
