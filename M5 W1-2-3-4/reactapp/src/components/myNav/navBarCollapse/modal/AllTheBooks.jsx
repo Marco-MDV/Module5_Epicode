@@ -5,7 +5,6 @@ import Modal from 'react-bootstrap/Modal';
 import myNavStyle from '../../myNavStyle.module.css'
 
 function Example({ selectedBook }) {
-  console.log(selectedBook);
   const modalBooks = () => {
     if (selectedBook.length === 0) {
       return (

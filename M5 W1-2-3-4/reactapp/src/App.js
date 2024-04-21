@@ -15,10 +15,11 @@ function App() {
   const [selectedBook, setSelectedBook] = useState([])
 
   //console.log(selectedBook);
-  const hendleCLick = (e) => {
+  const hendleCLick = (book) => {
+
     setSelectedBook([
       ...selectedBook,
-      { title: e.title, img: e.img, price: e.price }
+      { title: book.title, img: book.img, price: book.price }
     ])
   }
 
@@ -28,6 +29,8 @@ function App() {
   const hendleSearch = (filteredBooks) => {
     setSearchCard(filteredBooks)
   }
+
+  
 
   return (
     <>

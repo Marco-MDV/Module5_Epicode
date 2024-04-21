@@ -3,9 +3,7 @@ import CategoryBooks from './categoryBooks/CategoryBooks'
 import CategoryBooksSearch from './categoryBooksSearch/CategoryBooksSearch'
 
 export default function AllTheBooks({ booksFantasy, booksHistory, booksHorror, booksRomance, booksScifi, arrBooks, searchCard, hendleCLick }) {
-
-    //console.log(searchCard);
-
+   /*  console.log(hendleComment); ok*/
 
     return (
         <>
@@ -38,7 +36,7 @@ export default function AllTheBooks({ booksFantasy, booksHistory, booksHorror, b
                 <CategoryBooks
                     title='booksHorror'
                     books={booksHorror}
-                    category='due'
+                    category='tre'
                     hendleCLick={hendleCLick}
                 />
             </Row>
@@ -46,14 +44,17 @@ export default function AllTheBooks({ booksFantasy, booksHistory, booksHorror, b
                 <CategoryBooks
                     title='booksRomance'
                     books={booksRomance}
-                    category='due'
+                    category='quatro'
+                    hendleCLick={hendleCLick}
                 />
             </Row>
             <Row>
                 <CategoryBooks
                     title='booksScifi'
                     books={booksScifi}
-                    category='due'
+                    category='cinque'
+                    hendleCLick={hendleCLick}
+
                 />
             </Row>
         </>

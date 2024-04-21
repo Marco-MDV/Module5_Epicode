@@ -5,6 +5,8 @@ import MyCard from './card/Card';
 
 
 export default function CategoryBooks({category, title, books, hendleCLick}) {
+
+    /* console.log(hendleComment);ok */
     const removeHidden = ()=>{
         const elements = document.querySelectorAll('.'+category);
         const arrayElements = Array.from(elements);
@@ -47,29 +49,3 @@ export default function CategoryBooks({category, title, books, hendleCLick}) {
         </>
     );
 }
-
-
-/* 
-{books.map((book, index) => {
-                        if (index < 4) {
-                            return (
-                                <MyCard
-                                    category = {category}
-                                    book={book}
-                                    key={index}
-                                   hendleCLick={hendleCLick}
-                                />
-                            )
-                        } else if (index > 4) {
-                            return (
-                                <MyCard
-                                    category = {category}
-                                    book={book}
-                                    key={index}
-                                    hidden='d-none'
-                                    hendleCLick={hendleCLick}
-                                />
-                            )
-                        }
-                    })}
-*/

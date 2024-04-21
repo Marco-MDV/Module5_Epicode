@@ -54,7 +54,7 @@
     
     && figure{
         height: auto;
-        animation: height 1s linear forwards;
+        animation: height 0.15s linear forwards;
     }
     && figure img{
         object-fit: cover;
@@ -68,10 +68,11 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        animation: opacity 1s linear forwards;
+        animation: opacity 1.5s linear forwards;
     }
     
 }
+
 
 @keyframes opacity {
     from {
