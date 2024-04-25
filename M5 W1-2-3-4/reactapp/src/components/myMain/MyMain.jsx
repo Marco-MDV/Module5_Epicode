@@ -4,10 +4,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 import mainStyle from './mainStyle.module.css'
 import { useState } from 'react'
 
-export default function MyMain({arrBooks, CategoryBooks, searchCard, booksFantasy, booksHistory, booksHorror, booksRomance, booksScifi,hendleCLick}) {
-    /* console.log(searchCard); */
-    //console.log(booksFantasy);
-
+export default function MyMain({arrBooks, CategoryBooks, searchCard, arrBooksForCategory,hendleCLick}) {
     return (
         <Container fluid>
             <Row>
@@ -16,11 +13,7 @@ export default function MyMain({arrBooks, CategoryBooks, searchCard, booksFantas
                 </Col>
             </Row>
             <AllTheBooks
-            booksFantasy={booksFantasy}
-            booksHistory={booksHistory}
-            booksHorror={booksHorror}
-            booksRomance={booksRomance}
-            booksScifi={booksScifi}
+            arrBooksForCategory={arrBooksForCategory}
             arrBooks={arrBooks}
             CategoryBooks = {CategoryBooks}
             searchCard={searchCard}

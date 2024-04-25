@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { Button, Form, Nav, Navbar } from 'react-bootstrap'
+import {Form, Nav, Navbar } from 'react-bootstrap'
 import NavLink from '../navLink/NavLink'
 import NavDropDown from '../navDropDown/NavDropDown.jsx'
 import Modal from './modal/AllTheBooks.jsx'
 import myNavStyle from '../myNavStyle.module.css'
+import Switch from '../../switch/Switch.jsx'
 
-export default function NavbarCollapse({hendleSearch,arrBooks, selectedBook}) {
+export default function NavbarCollapse({hendleSearch,arrBooks, selectedBook, removeBook}) {
     const [input, setInput] = useState('');
 
     const heandleInputName = (e) =>{
@@ -36,9 +37,13 @@ export default function NavbarCollapse({hendleSearch,arrBooks, selectedBook}) {
                     text="Browse"
                 />
 
+                <Switch/>
+
                 <Modal
-                selectedBook={selectedBook}
+                    removeBook={removeBook}
+                    selectedBook={selectedBook}
                 />
+                
             </Nav>
             <Form className="d-flex">
                 <Form.Control

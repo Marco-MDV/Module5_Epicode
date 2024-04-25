@@ -7,7 +7,7 @@ nav a{
 }
 
 .myButton{
-    border: 1px solid white!important;
+    border: 1px solid white;
     background-color: transparent ;
 }
 
@@ -15,6 +15,10 @@ nav a{
     animation: transition 0.2s ease-in forwards !important;
 }
 
+
+.blackBord{
+    border: 1px solid black;
+}
 
 @keyframes transition {
     from{

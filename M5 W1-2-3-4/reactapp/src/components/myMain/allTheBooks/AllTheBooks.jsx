@@ -2,9 +2,7 @@ import { Row } from 'react-bootstrap'
 import CategoryBooks from './categoryBooks/CategoryBooks'
 import CategoryBooksSearch from './categoryBooksSearch/CategoryBooksSearch'
 
-export default function AllTheBooks({ booksFantasy, booksHistory, booksHorror, booksRomance, booksScifi, arrBooks, searchCard, hendleCLick }) {
-   /*  console.log(hendleComment); ok*/
-
+export default function AllTheBooks({ arrBooksForCategory, arrBooks, searchCard, hendleCLick }) {
     return (
         <>
             <Row>
@@ -16,47 +14,20 @@ export default function AllTheBooks({ booksFantasy, booksHistory, booksHorror, b
                     arrBooks={arrBooks}
                 />
             </Row>
-            <Row>
-                <CategoryBooks
-                    title='booksFantasy'
-                    books={booksFantasy}
-                    category='uno'
-                    hendleCLick={hendleCLick}
-                />
-            </Row>
-            <Row>
-                <CategoryBooks
-                    title='booksHistory'
-                    books={booksHistory}
-                    category='due'
-                    hendleCLick={hendleCLick}
-                />
-            </Row>
-            <Row>
-                <CategoryBooks
-                    title='booksHorror'
-                    books={booksHorror}
-                    category='tre'
-                    hendleCLick={hendleCLick}
-                />
-            </Row>
-            <Row>
-                <CategoryBooks
-                    title='booksRomance'
-                    books={booksRomance}
-                    category='quatro'
-                    hendleCLick={hendleCLick}
-                />
-            </Row>
-            <Row>
-                <CategoryBooks
-                    title='booksScifi'
-                    books={booksScifi}
-                    category='cinque'
-                    hendleCLick={hendleCLick}
 
-                />
-            </Row>
+           {
+             arrBooksForCategory.map((category, index) => {
+                return(
+                    <Row>
+                        <CategoryBooks
+                            title={arrBooksForCategory[index][0].category}
+                            books={category}
+                            hendleCLick={hendleCLick}
+                        />
+                    </Row>
+                )
+             })
+           }
         </>
     )
 }

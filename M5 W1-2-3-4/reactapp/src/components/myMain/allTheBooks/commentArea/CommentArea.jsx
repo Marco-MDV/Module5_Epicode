@@ -1,14 +1,13 @@
-import { Form, Table } from 'react-bootstrap/';
 import styleFeed from './styleFeed.module.css'
 import { useEffect, useState } from 'react';
 import Loader from '../../../loader/Loader'
 import MyError from '../../../myError/MyError';
-import ModalModifyComponent from './modalModifyComment/ModalModifyComment';
+import FormComponent from './form/FormComponent'
+import TableComponent from './table/TableComponent';
 
 const endPoint = 'https://striveschool-api.herokuapp.com/api/comments/'
 
 export default function CommentArea({ bookTitle, openFeed, asin, setShow , show}) {
-    /* console.log(hendleComment); ok */
 
     const [feed, setFeed] = useState([])
     const [see, setSee] = useState(true)
@@ -42,12 +41,10 @@ export default function CommentArea({ bookTitle, openFeed, asin, setShow , show}
 
     const [inputValue, setInputValue] = useState('')
 
-    /* console.log(inputValue); */
     const hookInputValue = (value) => {
         setInputValue(String(value.target.value))
     }
 
-    /* rate */
     const [rate, setRate] = useState(0)
 
     const hookRate = (value) => {
@@ -72,7 +69,6 @@ export default function CommentArea({ bookTitle, openFeed, asin, setShow , show}
                     })
                 })
                 const feedJson = await respons.json()
-                /* console.log(feedJson); */
                 if (respons.ok) {
                     setFeed([
                         ...feed,
@@ -91,9 +87,7 @@ export default function CommentArea({ bookTitle, openFeed, asin, setShow , show}
         }
     }
 
-    /* per vedere il modal che ci permette di fare la modifica */
     const [modalModify, setModalModify] = useState(false)
-    /* console.log(modalModify); */
     const hookModalModify = () => {
         setModalModify(!modalModify)
     }
@@ -144,64 +138,31 @@ export default function CommentArea({ bookTitle, openFeed, asin, setShow , show}
                                 <Loader />
                             )}
                             {!see && !error && (
-                                <Table responsive="sm">
-                                    <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th>Comment</th>
-                                            <th>Rate</th>
-                                            <th>Modify</th>
-                                            <th>Delete</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {feed.map((singleFeed, index) => {
-                                            { index++ }
-                                            return (
-                                                <>
-                                                    <tr>
-                                                        <td>{index}</td>
-                                                        <td><p className='m-0 text-truncate'>{singleFeed.comment}</p></td>
-                                                        <td>{singleFeed.rate}</td>
-                                                        <td><button onClick={() => {hookModalModify(); hookBookFeed(singleFeed)}} className={styleFeed.buttonMod + ' rounded '}>Modify</button></td>
-                                                        <td><button onClick={() => deleteComment(singleFeed._id)} className={styleFeed.buttonMod + ' rounded '}>Delete</button></td>
-                                                    </tr>
-                                                </>
-                                            )
-                                        })}
-                                        {modalModify &&
-                                            <ModalModifyComponent
-                                                setError={setError}
-                                                bookFeed={bookFeed}
-                                                endPoint={endPoint}
-                                                setFeed={setFeed}
-                                                feed={feed}
-                                                hookModalModify={hookModalModify}
-                                                setShow={setShow}
-                                                show={show}
-                                            />
-                                        }
-                                    </tbody>
-                                </Table>
+                                <>
+                                <TableComponent
+                                    setError={setError}
+                                    bookFeed={bookFeed}
+                                    endPoint={endPoint}
+                                    setFeed={setFeed}
+                                    feed={feed}
+                                    hookModalModify={hookModalModify}
+                                    modalModify={modalModify}
+                                    setShow={setShow}
+                                    show={show}
+                                    hookBookFeed={hookBookFeed}
+                                    deleteComment={deleteComment}
+                                />
+                            </>
                             )}
                         </div>
                     </div>
-                    <div className={' mt-2 d-flex flex-row justify-content-between  align-content-center gap-md-1'}>
-                        <Form.Select aria-label="Default select example" onChange={hookRate} className={styleFeed.selectRate}>
-                            <option value='0'>select rate</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                            <option value="4">Four</option>
-                            <option value="5">Five</option>
-                        </Form.Select>
-                        <div className='d-flex justify-content-center align-content-center w-100'>
-                            <input type="text" placeholder='insert your feed' className={styleFeed.inputFeed + ' w-100 rounded-start'} onChange={hookInputValue} />
-                            <button onClick={sendComment} className={styleFeed.sendFeed + ' rounded-end'}>Send</button>
-                        </div>
+                    <FormComponent
+                        hookRate={hookRate}
+                        hookInputValue={hookInputValue}
+                        sendComment={sendComment}
+                    />
                     </div>
-                </div>
-            </div>
-        </div>
-    )
+                    </div>
+                    </div>
+                )
 }

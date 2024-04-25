@@ -1,12 +1,15 @@
 import { Container, Navbar } from 'react-bootstrap'
 import NavbarCollapse from './navBarCollapse/NavbarCollapse.jsx'
 import myNavStyle from './myNavStyle.module.css'
+import { useContext } from 'react'
+import {ThemeContext} from '../themeContext/ThemeContext'
+ 
 
+export default function MyNav({hendleSearch,arrBooks,selectedBook, removeBook }) {
+    const {selectTheme} = useContext(ThemeContext) 
 
-export default function MyNav({hendleSearch,arrBooks,selectedBook }) {
-    /* console.log(hendleSearch); */
     return (
-        <Navbar expand="lg">
+        <Navbar expand="lg" className={selectTheme?null:'bg-dark'}>
             <Container fluid>
                 <Navbar.Brand href="#">EpiBooks!</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
@@ -14,6 +17,7 @@ export default function MyNav({hendleSearch,arrBooks,selectedBook }) {
                     arrBooks={arrBooks}
                     hendleSearch={hendleSearch}
                     selectedBook={selectedBook}
+                    removeBook={removeBook}
                 />
             </Container>
         </Navbar>

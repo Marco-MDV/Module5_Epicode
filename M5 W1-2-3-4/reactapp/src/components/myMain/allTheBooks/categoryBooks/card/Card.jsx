@@ -4,20 +4,18 @@ import { useEffect, useState } from 'react'
 import CommentArea from '../../commentArea/CommentArea'
 
 export default function MyCard({ book, index, hidden, hendleCLick, category }) {
-
-    /* console.log(hendleComment); ok */
-
-    /* console.log(book); */
     const [selected, setSelected] = useState(false)
-
-    //console.log(selected);
 
     const handleSelected = () => {
         setSelected(!selected)
     }
 
-    const [show, setShow] = useState(false)
+    
 
+    /* devo passare handleSelected come props */
+
+
+    const [show, setShow] = useState(false)
 
     const openFeed = () => {
         setShow(!show)    
@@ -50,7 +48,7 @@ export default function MyCard({ book, index, hidden, hendleCLick, category }) {
 
             {show &&(
                 <CommentArea
-                bookTitle={book.title}
+                    bookTitle={book.title}
                     openFeed={openFeed}
                     asin={book.asin}
                     setShow={setShow}
