@@ -14,8 +14,10 @@ export default function NavbarCollapse({hendleSearch,arrBooks, selectedBook, rem
     }
 
     const filtercard = () =>{
-        const filteredBooks = arrBooks.filter(book => book.title.toLowerCase().includes(input.toLowerCase()))
-        return hendleSearch(filteredBooks)
+        if (input != '') {
+            const filteredBooks = arrBooks.filter(book => book.title.toLowerCase().includes(input.toLowerCase()))
+            return hendleSearch(filteredBooks)
+        }
     }
 
     return (

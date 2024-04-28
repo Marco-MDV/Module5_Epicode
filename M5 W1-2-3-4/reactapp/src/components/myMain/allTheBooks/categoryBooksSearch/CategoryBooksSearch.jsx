@@ -2,7 +2,7 @@ import { Col } from 'react-bootstrap'
 import mainStyle from '../../mainStyle.module.css'
 import MyCard from '../categoryBooks/card/Card.jsx';
 
-export default function CategoryBooksSearch({searchCard, category, hendleCLick, title, handleShow,  }) {
+export default function CategoryBooksSearch({searchCard, category, hendleCLick, title, handleShow, hookAsinVlue }) {
     const check = () =>{
         if (searchCard.length === 0) {
             return(
@@ -29,6 +29,7 @@ export default function CategoryBooksSearch({searchCard, category, hendleCLick, 
                     hendleCLick={hendleCLick}
                     key={index}
                     handleShow={handleShow}
+                    hookAsinVlue={hookAsinVlue}
                 />
                 )
             })}

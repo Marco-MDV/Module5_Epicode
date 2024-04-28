@@ -58,8 +58,7 @@ export default function TableComponent({ setError, bookFeed, endPoint, setFeed, 
                         hookModalModify={hookModalModify}
                         setShow={setShow}
                         show={show}
-                    />
-                }
+                    />}
             </tbody>
         </Table>
     )

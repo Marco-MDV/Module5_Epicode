@@ -1,19 +1,14 @@
 import { Col } from 'react-bootstrap'
 import cardStyle from './cardStyle.css'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import CommentArea from '../../commentArea/CommentArea'
 
-export default function MyCard({ book, index, hidden, hendleCLick, category }) {
+export default function MyCard({ book, index, hidden, hendleCLick, category,hookAsinVlue, requestInfo}) {
     const [selected, setSelected] = useState(false)
 
     const handleSelected = () => {
         setSelected(!selected)
     }
-
-    
-
-    /* devo passare handleSelected come props */
-
 
     const [show, setShow] = useState(false)
 
@@ -23,7 +18,7 @@ export default function MyCard({ book, index, hidden, hendleCLick, category }) {
 
     return (
         <>
-            <Col key={index} xs={12} md={3} className={hidden + ' ' + category + ' p-5 p-md-3'}>
+            <Col key={index} xs={12} md={4} className={hidden + ' ' + category + ' p-5 p-md-3'}>
                 <div className={'position-relative w-100 myCard'}>
                     <figure className='m-0 w-100 position-relative'>
                         <img src={book.img} alt={"image " + book.title} className='w-100 h-100' />
@@ -33,13 +28,14 @@ export default function MyCard({ book, index, hidden, hendleCLick, category }) {
                             </p>
                         </div>
                     </figure>
-                    <div className='containerInfo gap-4 p-2 flex-wrap '>
-                        <p className=' text-center titleBook m-0'>{book.title}</p>
+                    <div className='containerInfo gap-4 p-2 '>
+                        <p className=' text-center titleBook m-0 w-100 text-truncate'>{book.title}</p>
                         <div className='d-flex flex-wrap justify-content-between align-items-center w-100'>
                             <p className=' price rounded m-0'>{"Price: " + book.price}</p>
                             <div className='d-flex '>
-                                <button className='price ms-2 p-2 rounded m-0 w-50 ' onClick={() => openFeed()}>open feedback</button>
                                 <button className='price ms-2 p-2 rounded m-0 w-50 ' onClick={() => {handleSelected();hendleCLick(book)}}>Add List</button>
+                                <button className='price ms-2 p-2 rounded m-0 w-50 d-flex d-lg-none' onClick={() => openFeed()}>open feedback</button>
+                                <button className='rounded d-none d-lg-flex' onClick={()=>{hookAsinVlue(String(book.asin)); requestInfo(book.asin)}}>Comment</button>
                             </div>
                         </div>
                     </div>

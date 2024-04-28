@@ -124,7 +124,7 @@ export default function CommentArea({ bookTitle, openFeed, asin, setShow , show}
     } 
 
     return (
-        <div className={styleFeed.bgFeed + ' position-fixed top-50 start-50 w-100 h-100 translate-middle z-2 '}>
+        <div className={styleFeed.bgFeed + ' position-fixed top-50 start-50 w-100 h-100 translate-middle z-2'}>
             <div className={styleFeed.containerFeedback + ' position-fixed top-50 start-50 translate-middle'}>
                 <div className={'position-relative  bg-white p-3 rounded'}>
                     <button onClick={openFeed} className={styleFeed.buttonClose + ' position-absolute me-1 mt-1 top-0 end-0'}>X</button>

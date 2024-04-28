@@ -4,7 +4,7 @@ import mainStyle from '../../mainStyle.module.css'
 import MyCard from './card/Card';
 
 
-export default function CategoryBooks({category, title, books, hendleCLick}) {
+export default function CategoryBooks({category, title, books, hendleCLick, hookAsinVlue, requestInfo}) {
     const [show, setShow] = useState(false)
     const modShow =() =>{setShow(!show)}
 
@@ -18,16 +18,18 @@ export default function CategoryBooks({category, title, books, hendleCLick}) {
             </Col>
             
             {books.map((book, index) => {
-                        if (index < 4) {
+                        if (index < 3) {
                             return (
                                 <MyCard
                                     category = {category}
                                     book={book}
                                     key={index}
                                     hendleCLick={hendleCLick}
+                                    hookAsinVlue={hookAsinVlue}
+                                    requestInfo={requestInfo}
                                 />
                             )
-                        } else if (index > 4) {
+                        } else if (index > 3) {
                             return (
                                 show && (
                                   <MyCard
@@ -35,6 +37,8 @@ export default function CategoryBooks({category, title, books, hendleCLick}) {
                                     book={book}
                                     key={index}
                                     hendleCLick={hendleCLick}
+                                    hookAsinVlue={hookAsinVlue}
+                                    requestInfo={requestInfo}
                                   />
                                 )
                               );
