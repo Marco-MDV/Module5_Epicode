@@ -1,0 +1,14 @@
+.figureDog {
+    height: 300px;
+    object-fit: cover;
+}
+
+.deviceDisplay {
+    min-height: calc(100vh - 185px);
+}
+
+@media screen and (max-width: 600px) {
+    .deviceDisplay {
+        min-height: calc(100vh - 289px);
+    }
+}

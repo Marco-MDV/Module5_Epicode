@@ -5,12 +5,13 @@ import TextInfo from './textInfo/TextInfo'
 import arrayInfoPages from '../../data/arrayInfoPages'
 import { useContext } from 'react'
 import { ThemeContext } from '../themeContext/ThemeContext'
+import { Link } from'react-router-dom'
 
 export default function MyFooter() {
     const {selectTheme} = useContext(ThemeContext)
 
     return (
-        <footer className={(selectTheme?null:'bg-dark') + ' mt-5'}>
+        <footer className={(selectTheme?null:'bg-dark')}>
             <Container>
                 <Row>
                     <Col className='p-3'>
@@ -18,7 +19,7 @@ export default function MyFooter() {
                             {
                                 arrayInfoPages.map((page , index) => {
                                     return (
-                                        <InfoLink key={index} text={page} href='#' />
+                                        <Link to='/' key={index} >{page}</Link>
                                     )
                                 })
                             }

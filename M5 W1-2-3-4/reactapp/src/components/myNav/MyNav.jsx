@@ -5,7 +5,7 @@ import { useContext } from 'react'
 import {ThemeContext} from '../themeContext/ThemeContext'
  
 
-export default function MyNav({hendleSearch,arrBooks,selectedBook, removeBook }) {
+export default function MyNav({hendleSearch,arrBooks,selectedBook, removeBook, handleDeselected, setHandleDeselected}) {
     const {selectTheme} = useContext(ThemeContext) 
 
     return (
@@ -18,6 +18,8 @@ export default function MyNav({hendleSearch,arrBooks,selectedBook, removeBook })
                     hendleSearch={hendleSearch}
                     selectedBook={selectedBook}
                     removeBook={removeBook}
+                    handleDeselected={handleDeselected}
+                    setHandleDeselected={setHandleDeselected}
                 />
             </Container>
         </Navbar>

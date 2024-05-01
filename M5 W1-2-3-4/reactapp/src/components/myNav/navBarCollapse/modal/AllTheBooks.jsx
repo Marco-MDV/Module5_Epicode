@@ -4,7 +4,8 @@ import myNavStyle from '../../myNavStyle.module.css';
 import { ThemeContext } from '../../../themeContext/ThemeContext';
 
 
-function Example({ selectedBook, removeBook }) {
+function Example({ selectedBook, removeBook, handleDeselected, setHandleDeselected }) {
+
   const modalBooks = () => {
     if (selectedBook.length === 0) {
       return (
@@ -14,16 +15,16 @@ function Example({ selectedBook, removeBook }) {
       return (
         selectedBook.map(book => {
           return (
-            <div className='d-flex w-100 justify-content-between align-items-center gap-3'>
-              <div className='w-75 d-flex justify-content-center align-items-center gap-4'>
+            <div key={book.asin} className='d-flex w-100 justify-content-between align-items-center gap-3'>
+              <div className=' w-75 d-flex justify-content-between align-items-center'>
                 <figure className={myNavStyle.figureImgModale}>
                   <img src={book.img} alt={book.title} className='w-100 h-100 rounded' />
                 </figure>
-                <p className='text-truncate'>
+                <p className='text-truncate w-75 m-0'>
                   {book.title}
                 </p>
               </div>
-              <button onClick={()=>removeBook(book)}>X</button>
+              <button onClick={()=>{removeBook(book)}} className='btn btn-light rounded'>X</button>
             </div>
           )
         })

@@ -5,16 +5,20 @@ import NavDropDown from '../navDropDown/NavDropDown.jsx'
 import Modal from './modal/AllTheBooks.jsx'
 import myNavStyle from '../myNavStyle.module.css'
 import Switch from '../../switch/Switch.jsx'
+import { Link } from 'react-router-dom'
 
-export default function NavbarCollapse({hendleSearch,arrBooks, selectedBook, removeBook}) {
+export default function NavbarCollapse({hendleSearch,arrBooks, selectedBook, removeBook, handleDeselected, setHandleDeselected }) {
     const [input, setInput] = useState('');
 
     const heandleInputName = (e) =>{
-        setInput(e.target.value)
+        if (e.target.value != ' ') {
+            setInput(e.target.value)
+        }
     }
 
     const filtercard = () =>{
         if (input != '') {
+            console.log(input);
             const filteredBooks = arrBooks.filter(book => book.title.toLowerCase().includes(input.toLowerCase()))
             return hendleSearch(filteredBooks)
         }
@@ -23,28 +27,22 @@ export default function NavbarCollapse({hendleSearch,arrBooks, selectedBook, rem
     return (
         <Navbar.Collapse id="navbarScroll">
             <Nav
-                className="me-auto my-2 my-lg-0"
+                className="me-auto my-2 my-lg-0 d-flex justify-content-center align-items-center"
                 style={{ maxHeight: '100px' }}
                 navbarScroll
             >
-                <NavLink
-                    href="#"
-                    text="Home"
-                />
-
+                <Link to='/' className='link-underline link-underline-opacity-0'>Home</Link>
+                
                 <NavDropDown />
-
-                <NavLink
-                    href="#"
-                    text="Browse"
-                />
 
                 <Switch/>
 
-                <Modal
+                {/* <Modal
                     removeBook={removeBook}
                     selectedBook={selectedBook}
-                />
+                    handleDeselected={handleDeselected}
+                    setHandleDeselected={setHandleDeselected}
+                /> */}
                 
             </Nav>
             <Form className="d-flex">
