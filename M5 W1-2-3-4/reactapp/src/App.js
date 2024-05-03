@@ -61,7 +61,7 @@ function App() {
                 setHandleDeselected={setHandleDeselected}
               />
             } />
-            <Route path="/BookReviews/:asin"  element={<BookReviews arrBooks={arrBooks}/>} />
+            <Route path="/BookReviews/:asin"  element={<BookReviews arrBooks={arrBooks}/> } />
             <Route path="*" element={<ErrorPages />} />
           </Routes>
           <MyFooter />

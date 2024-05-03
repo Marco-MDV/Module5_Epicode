@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Col, Container, Row, Table, Tooltip, OverlayTrigger } from 'react-bootstrap'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import styleBookReviews from './styleBookReviews.css'
 import Loader from '../../loader/Loader'
 import MyError from '../../myError/MyError'
 import { ThemeContext } from '../../themeContext/ThemeContext'
+import ErrorPages from '../errorPages/ErrorPages'
 
 export default function BookReviews({ arrBooks }) {
   const asinParams = useParams()
@@ -30,15 +31,24 @@ export default function BookReviews({ arrBooks }) {
         setShowData(true)
       }
     } catch (error) {
-      console.log(error);
       setShowErrorMessge(true)
       setShowLoader(false)
     }
   }
   const selectedBook = arrBooks.filter(book => book.asin === asin)
 
+  const [showPage , setShowPage] = useState(false)
+  const testAsin = ()=>{
+    arrBooks.map((book, i)=>{
+      if (book.asin === asin) {
+        setShowPage(true)
+      }
+    })
+  }
+
   useEffect(() => {
     GetBookReviews(asinParams.asin)
+    testAsin()
   }, [])
 
   const [showTableSmartphone, setShowTableSmartphone] = useState(false)
@@ -81,15 +91,18 @@ export default function BookReviews({ arrBooks }) {
 
   const {selectTheme} = useContext(ThemeContext)
 
+  
+
   return (
     <Container>
-      <Row className='overflow-hidden position-relative'>
+      {showPage &&(<Row className='overflow-hidden position-relative'>
         <Col xs={12} md={5} >
           {showLoader && !showData && !showErrorMessage && (<div className='deviceDisplay d-flex justify-content-center align-items-center '><Loader /></div>)}
           {!showLoader && showErrorMessage && !showData && (<div className='deviceDisplay d-flex justify-content-center align-items-center d-md-none'><MyError /></div>)}
           {!showLoader && !showErrorMessage && showData && (
             <>
-              <div className='d-flex justify-content-center align-items-center deviceDisplay '>
+              <div className='d-flex justify-content-center align-items-center deviceDisplay flex-column pt-4'>
+                <h3 className='text-center'>{selectedBook[0].title}</h3>
                 <figure className='m-0 w-100 h-100 p-5'>
                   <img src={selectedBook[0].img} alt="img" className='w-100 h-100 rounded-end-4' />
                 </figure>
@@ -151,7 +164,8 @@ export default function BookReviews({ arrBooks }) {
             {!showLoader && showErrorMessage && !showData && (<MyError />)}
           </div>
         </Col>
-      </Row>
+      </Row>)}
+      {!showPage && (<ErrorPages/>)}
     </Container>
   )
 }
