@@ -14,7 +14,6 @@ export default function MyMain({arrBooks, CategoryBooks, searchCard, arrBooksFor
             <AllTheBooks
             arrBooksForCategory={arrBooksForCategory}
             arrBooks={arrBooks}
-            CategoryBooks = {CategoryBooks}
             searchCard={searchCard}
             hendleCLick={hendleCLick}
             handleDeselected={handleDeselected}

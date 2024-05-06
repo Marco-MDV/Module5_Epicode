@@ -24,6 +24,7 @@ export default function CategoryBooksSearch({searchCard, category, hendleCLick, 
             {searchCard.map((book, index) => {
                 return(
                     <MyCard
+                    valueId='searchCard'
                     category={category}
                     book={book}
                     hendleCLick={hendleCLick}

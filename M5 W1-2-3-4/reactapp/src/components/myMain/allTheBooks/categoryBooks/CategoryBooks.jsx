@@ -29,6 +29,7 @@ export default function CategoryBooks({category, title, books, hendleCLick, hook
                                     requestInfo={requestInfo}
                                     handleDeselected={handleDeselected}
                                     setHandleDeselected={setHandleDeselected}
+                                    valueId='idCard'
                                 />
                             )
                         } else if (index > 3) {
@@ -43,6 +44,7 @@ export default function CategoryBooks({category, title, books, hendleCLick, hook
                                     requestInfo={requestInfo}
                                     handleDeselected={handleDeselected}
                                     setHandleDeselected={setHandleDeselected}
+                                    valueId='idCard'
                                   />
                               );
                         }

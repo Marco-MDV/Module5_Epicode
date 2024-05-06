@@ -7,8 +7,8 @@ import AddComment2 from '../commentArea2/AddComment2'
 import { ThemeContext } from '../../themeContext/ThemeContext'
 
 export default function AllTheBooks({ arrBooksForCategory, arrBooks, searchCard, hendleCLick, handleDeselected, setHandleDeselected }) {
-    const endPoint = 'https://striveschool-api.herokuapp.com/api/comments/'
-    const {selectTheme} = useContext(ThemeContext)
+    const endPoint = 'https://striveschool-api.herokuapp.com/api/comments/';
+    const {selectTheme} = useContext(ThemeContext);
 
     const [show, setShow] = useState(false)
 
@@ -85,7 +85,7 @@ export default function AllTheBooks({ arrBooksForCategory, arrBooks, searchCard,
                     <div className={(selectTheme?' bg-info-subtle text-dark ':' bg-dark text-white') +' w-100 h-100 rounded-4 justify-content-center align-items-start d-none d-lg-flex'}>
                         <div className='d-flex justify-content-center align-items-center flex-column px-4 w-100 position-sticky top-0 '>
                             <h3 className='py-5'>Comment Area</h3>
-                            {!show && (<p className='text-center'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sint facilis natus quod maxime eaque eum commodi inventore voluptatem illo?</p>)}
+                            {!show && (<p className='text-center' data-testid='defaulText'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci sint facilis natus quod maxime eaque eum commodi inventore voluptatem illo?</p>)}
                             {show && (
                                 <>
                                     <CommentArea2

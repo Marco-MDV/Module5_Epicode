@@ -3,6 +3,7 @@ import Loader from '../../loader/Loader';
 import MyError from '../../myError/MyError';
 
 export default function CommentArea2({ comment, showLoader, endPoint, setComment, showErrorMessage }) {
+    console.log(comment);
     const [input, setInput] = useState('');
     const [rate, setRate] = useState(0);
     const [visibleComment, setVisibleComment] = useState(null);
@@ -69,7 +70,7 @@ export default function CommentArea2({ comment, showLoader, endPoint, setComment
 
 
     return (
-        <div className="text-start w-100">
+        <div data-testid='CommentArea' className="text-start w-100">
             <p>This is the list:</p>
             <ol className="d-flex align-content-center flex-column">
                 {showLoader && <Loader/>}
