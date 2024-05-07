@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { fireEvent, logRoles, render, screen } from '@testing-library/react';
+import React from 'react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import Welcome from './components/myMain/welcome/Welcome';
 import '@testing-library/jest-dom'
 import { ThemeProvider } from './components/themeContext/ThemeContext';
 import MyCard from './components/myMain/allTheBooks/categoryBooks/card/Card';
-import { BrowserRouter, MemoryRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import CommentArea2 from './components/myMain/commentArea2/CommentArea2';
-import NavbarCollapse from './components/myNav/navBarCollapse/NavbarCollapse';
 import AllTheBooks from './components/myMain/allTheBooks/AllTheBooks';
+import App from './App';
 import CategoryBooks from './components/myMain/allTheBooks/categoryBooks/CategoryBooks';
 const bookFake = {
   asin: "0316438960",
@@ -84,39 +84,39 @@ const arrBooksForCategory = [
 /* 1 */
 it('check main', () => {
   render(<ThemeProvider><Welcome /></ThemeProvider>);
-  const textTitle = screen.getByText('EpiBooks!');
+  const textTitle = screen.getByTestId('Welcome');
   expect(textTitle).toBeVisible();
 })
 
 /* 2 */
 it('check numbers cards', () => {
-  render(<BrowserRouter><MyCard book={bookFake} valueId='idCard'/></BrowserRouter>)
-  const checkCards = screen.getAllByTestId('idCard')
-  checkCards.forEach(checkCard =>{
-    expect(checkCard).toBeInTheDocument();
-    expect(checkCard).toBeVisible();
-  })
+  render(<App/>)
+  const cards = screen.getAllByTestId('idCard')
+  expect(cards).toHaveLength(686)
 })
 
 /* 3 */
 it('check CommentArea', () => {
   render(<CommentArea2 comment={comment}/>)
   const CommentArea= screen.getByTestId('CommentArea')
-  expect(CommentArea).toBeInTheDocument();
   expect(CommentArea).toBeVisible();
 })
 
 /* 4 */
-/* devi aggiustare il to have length */
 it('search camp',()=>{
-  render(<MemoryRouter><ThemeProvider><NavbarCollapse/></ThemeProvider></MemoryRouter>);
+  render(
+    <App/>
+  );
   const input = screen.getByPlaceholderText('Search your book...')
   fireEvent.change(input, {target: {value:'Wish'}})
-  const allTheBooks = screen.findAllByTestId('searchCard')
-  expect(allTheBooks)/* .toHaveLength(2) */
+  const search = screen.getByTestId('searchCardButton')
+  fireEvent.click(search)
+  const allTheBooks = screen.getAllByTestId('searchCard')
+  expect(allTheBooks).toHaveLength(2)
 })
 
 /* 5 */
+/* non ho fatto il bordo ma un bollino con scritto selected*/
 it('Checking Bookmarks', () => {
   render(<BrowserRouter><MyCard book={bookFake}/></BrowserRouter>)
   const checkCard = screen.getByText('Select')
@@ -126,6 +126,7 @@ it('Checking Bookmarks', () => {
 })
 
 /* 6 */
+/* per deselezionare il libro ho implemetato una logica a bottone per deselezionare il libro */
 it('Check Deselected', ()=>{
   render(<BrowserRouter><MyCard book={bookFake}/></BrowserRouter>)
 
@@ -147,10 +148,10 @@ it('Check if there are no comments', ()=>{
     <ThemeProvider>
       <BrowserRouter>
         <AllTheBooks
-            arrBooks={arrBooks}
-            arrBooksForCategory={arrBooksForCategory}
-            searchCard={[]}
-          />
+          arrBooks={arrBooks}
+          arrBooksForCategory={arrBooksForCategory}
+          searchCard={[]}
+        />
       </BrowserRouter>
     </ThemeProvider>
   )
@@ -159,26 +160,21 @@ it('Check if there are no comments', ()=>{
 })
 
 /* 8 */
-const setAsinVlue =(variable)=>{variable}
-const setShow=(variable)=>{variable}
-
-const hookAsinVlue=()=>{setAsinVlue('0316389706'); setShow(true) }
-const requestInfo =()=>{'0316389706'}
-describe('check for see comment',()=>{
-  it('Chek button comment',()=>{
-    render(
+it('checkComment', async ()=>{
+  render(
+    <ThemeProvider>
       <BrowserRouter>
-        <MyCard book={bookFake} hookAsinVlue={hookAsinVlue} requestInfo={requestInfo}/>
+        <AllTheBooks
+            arrBooks={arrBooks}
+            arrBooksForCategory={arrBooksForCategory}
+            searchCard={[]}
+          />
       </BrowserRouter>
-    )
-    const comment = screen.getByText('Comment')
-    fireEvent.click(comment)
-  })
-  it('check comment',()=>{
-    render(<CommentArea2 comment={comment}/>)
-    const CommentArea= screen.getByTestId('CommentArea')
-    expect(CommentArea).toBeInTheDocument();
-    expect(CommentArea).toBeVisible();
-  })
+    </ThemeProvider>
+  )
+  const commentButtons = screen.getAllByTestId('commentButton')
+  fireEvent.click(commentButtons[0])
+  const commentsArea = await screen.findAllByTestId('test-comment')
+  expect(commentsArea).toHaveLength(5)
 })
 

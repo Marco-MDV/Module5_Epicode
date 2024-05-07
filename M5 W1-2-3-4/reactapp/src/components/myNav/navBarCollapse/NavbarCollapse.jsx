@@ -18,7 +18,7 @@ export default function NavbarCollapse({hendleSearch,arrBooks, selectedBook, rem
 
     const filtercard = () =>{
         if (input != '') {
-            console.log(input);
+            /* console.log(input); */
             const filteredBooks = arrBooks.filter(book => book.title.toLowerCase().includes(input.toLowerCase()))
             return hendleSearch(filteredBooks)
         }
@@ -53,7 +53,7 @@ export default function NavbarCollapse({hendleSearch,arrBooks, selectedBook, rem
                     aria-label="Search"
                     onChange={heandleInputName}
                 />
-                <button onClick={(e) => {filtercard(e);e.preventDefault()}} className={myNavStyle.myButton + ' rounded text-white '}>Search</button>
+                <button data-testid='searchCardButton' onClick={(e) => {filtercard(e);e.preventDefault()}} className={myNavStyle.myButton + ' rounded text-white '}>Search</button>
             </Form>
         </Navbar.Collapse>
     )

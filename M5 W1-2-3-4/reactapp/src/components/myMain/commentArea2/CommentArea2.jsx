@@ -75,8 +75,9 @@ export default function CommentArea2({ comment, showLoader, endPoint, setComment
             <ol className="d-flex align-content-center flex-column">
                 {showLoader && <Loader/>}
                 {showErrorMessage && <MyError/>}
-                {comment.map(singleComment => (
-                        <li key={singleComment._id} className='mt-2 border-bottom p-1'>
+                {!showLoader && !showErrorMessage &&
+                    comment.map(singleComment => (
+                        <li key={singleComment._id} className='mt-2 border-bottom p-1' data-testid='test-comment'>
                             <div className='d-flex justify-content-between'>
                                 <div className="text-truncate">{singleComment.comment}</div>
                                 <div className="d-flex gap-2">

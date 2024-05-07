@@ -5,7 +5,7 @@ import CommentArea from '../../commentArea/CommentArea'
 import { useNavigate } from 'react-router-dom'
 
 export default function MyCard({valueId, book, hendleCLick, hookAsinVlue, requestInfo, showCard, handleDeselected, setHandleDeselected}) {
-    console.log(requestInfo);
+    /* console.log(requestInfo); */
 
     const [selected, setSelected] = useState(false)
 
@@ -51,7 +51,7 @@ export default function MyCard({valueId, book, hendleCLick, hookAsinVlue, reques
                                 {!selected && (<button className='price  p-2 rounded m-0 w-50 ' onClick={() => {handleSelected()/* ; hendleCLick(book) */}}>Select</button>)}{/* lo levato perché nei testa da errore ma sarebbe da aggiungere*/}
                                 {selected && (<button className='price  p-2 rounded m-0 w-50 ' data-testid='Deselect' onClick={() => {handleSelected()/* ; hendleCLick(book) */}}>Deselect</button>)}{/* lo levato perché nei testa da errore ma sarebbe da aggiungere*/}
                                 <button className='price  p-2 rounded m-0 w-50 d-flex d-lg-none' onClick={() => openFeed()}>open feedback</button>
-                                <button className='rounded d-none d-lg-flex' onClick={()=>{hookAsinVlue(String(book.asin)); requestInfo(book.asin)}}>Comment</button>
+                                <button data-testid='commentButton' className='rounded d-none d-lg-flex' onClick={()=>{hookAsinVlue(String(book.asin)); requestInfo(book.asin)}}>Comment</button>
                             </div>
                         </div>
                     </div>
